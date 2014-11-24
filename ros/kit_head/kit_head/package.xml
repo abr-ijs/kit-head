@@ -1,0 +1,18 @@
+<package>
+  <name>kit_head</name>
+  <version>0.0.0</version>
+  <description>
+    ROS meta-package containing kit_head pkgs.
+  </description>
+  <maintainer email="carlos.rosales@for.unipi.it">Carlos Rosales</maintainer>
+  <license>GPLv2</license>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!--> PACKAGES </-->  
+  <run_depend> kit_head_description </run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
+</package>
