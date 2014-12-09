@@ -229,7 +229,7 @@
       </collision>
     </link>
 
-    <joint name="${name}_face_joint" type="fixed">
+<!--     <joint name="${name}_face_joint" type="fixed">
       <origin xyz="0.05 -0.02 0" rpy="-1.57 2.356194 0.0" />
       <parent link="${name}_head_5_link"/>
       <child link="${name}_face_link"/>
@@ -249,7 +249,7 @@
           <cylinder radius="0.03" length="0.15"/>
         </geometry>
       </collision>
-    </link>
+    </link> -->
 
   </xacro:macro>
 
