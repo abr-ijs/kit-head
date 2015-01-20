@@ -1,5 +1,5 @@
 <launch>
-	<arg name="gui" default="True" />
+	<arg name="gui" default="False" />
 	<param name="robot_description" command="$(find xacro)/xacro.py $(find kit_head_description)/robot/kit_head_in_world.urdf.xacro"/>
 	<param name="use_gui" value="$(arg gui)"/>
 	
