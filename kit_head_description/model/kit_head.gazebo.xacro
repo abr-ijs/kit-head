@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+	<xacro:macro name="kit_head_gazebo" params="name">
+
+		<gazebo reference="${name}_base_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+		</gazebo>
+
+		<gazebo reference="${name}_head_1_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+		</gazebo>
+
+		<gazebo reference="${name}_head_2_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+		</gazebo>
+
+		<gazebo reference="${name}_head_3_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+		</gazebo>
+
+		<gazebo reference="${name}_head_4_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+		</gazebo>
+
+		<gazebo reference="${name}_head_5_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+		</gazebo>
+
+		<gazebo reference="${name}_left_eye_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+
+			<sensor type="camera" name="${name}_left_eye">
+				<update_rate>30.0</update_rate>
+				<camera name="${name}_left_eye_cam">
+					<horizontal_fov>1.3962634</horizontal_fov>
+					<image>
+						<width>800</width>
+						<height>800</height>
+						<format>R8G8B8</format>
+					</image>
+					<clip>
+						<near>0.02</near>
+						<far>300</far>
+					</clip>
+					<noise>
+					<type>gaussian</type>
+						<!-- Noise is sampled independently per pixel on each frame.
+						That pixel's noise value is added to each of its color
+						channels, which at that point lie in the range [0,1]. -->
+						<mean>0.0</mean>
+						<stddev>0.007</stddev>
+					</noise>
+				</camera>
+				<plugin name="${name}_left_eye_camera_controller" filename="libgazebo_ros_camera.so">
+					<alwaysOn>true</alwaysOn>
+					<updateRate>30.0</updateRate>
+					<cameraName>${name}_left_eye</cameraName>
+					<imageTopicName>image_raw</imageTopicName>
+					<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+					<frameName>${name}_left_eye_link</frameName>
+					<hackBaseline>0.07</hackBaseline>
+					<distortionK1>0.0</distortionK1>
+					<distortionK2>0.0</distortionK2>
+					<distortionK3>0.0</distortionK3>
+					<distortionT1>0.0</distortionT1>
+					<distortionT2>0.0</distortionT2>
+				</plugin>
+			</sensor>
+		</gazebo>
+
+		<gazebo reference="${name}_right_eye_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+
+			<sensor type="camera" name="${name}_right_eye">
+				<update_rate>30.0</update_rate>
+				<camera name="${name}_right_eye_cam">
+					<horizontal_fov>1.3962634</horizontal_fov>
+					<image>
+						<width>800</width>
+						<height>800</height>
+						<format>R8G8B8</format>
+					</image>
+					<clip>
+						<near>0.02</near>
+						<far>300</far>
+					</clip>
+					<noise>
+						<type>gaussian</type>
+						<!-- Noise is sampled independently per pixel on each frame.
+						That pixel's noise value is added to each of its color
+						channels, which at that point lie in the range [0,1]. -->
+						<mean>0.0</mean>
+						<stddev>0.007</stddev>
+					</noise>
+				</camera>
+				<plugin name="${name}_right_eye_camera_controller" filename="libgazebo_ros_camera.so">
+					<alwaysOn>true</alwaysOn>
+					<updateRate>100.0</updateRate>
+					<cameraName>${name}_right_eye</cameraName>
+					<imageTopicName>image_raw</imageTopicName>
+					<cameraInfoTopicName>camera_info</cameraInfoTopicName>
+					<frameName>${name}_right_eye_link</frameName>
+					<hackBaseline>0.07</hackBaseline>
+					<distortionK1>0.0</distortionK1>
+					<distortionK2>0.0</distortionK2>
+					<distortionK3>0.0</distortionK3>
+					<distortionT1>0.0</distortionT1>
+					<distortionT2>0.0</distortionT2>
+				</plugin>
+			</sensor>
+		</gazebo>
+
+		<gazebo reference="${name}_asus_link">
+			<!-- selfCollide>true</selfCollide -->
+			<gravity>true</gravity>
+			<mu1>500.0</mu1>
+			<mu2>500.0</mu2>
+			<kp>10000000.0</kp>
+			<kd>1.0</kd>
+
+			<sensor type="depth" name="${name}_xtion">
+				<update_rate>10</update_rate>
+				<camera>
+					<horizontal_fov>1.09606677025</horizontal_fov>
+					<image>
+						<format>R8G8B8</format>
+						<width>640</width>
+						<height>480</height>
+					</image>
+					<clip>
+						<near>0.5</near>
+						<far>9</far>
+					</clip>
+				</camera>
+				<plugin filename="libgazebo_ros_openni_kinect.so" name="xtion_camera_controller">
+					<alwaysOn>true</alwaysOn>
+					<updateRate>10</updateRate>
+					<cameraName>${name}_asus</cameraName>
+					<imageTopicName>${name}_asus/rgb/image_raw</imageTopicName>
+					<cameraInfoTopicName>${name}_asus/rgb/camera_info</cameraInfoTopicName>
+					<depthImageTopicName>${name}_asus/depth/image_raw</depthImageTopicName>
+					<depthImageCameraInfoTopicName>${name}_asus/depth/camera_info</depthImageCameraInfoTopicName>
+					<pointCloudTopicName>${name}_asus/depth/points</pointCloudTopicName>
+					<frameName>${name}_asus/camera_rgb_optical_frame</frameName>
+					<pointCloudCutoff>0.5</pointCloudCutoff>
+					<distortion_k1>0.0</distortion_k1>
+					<distortion_k2>0.0</distortion_k2>
+					<distortion_k3>0.0</distortion_k3>
+					<distortion_t1>0.0</distortion_t1>
+					<distortion_t2>0.0</distortion_t2>
+				</plugin>
+			</sensor>
+		</gazebo>
+
+		<!-- plugin name="${name}_asus_controller" filename="libgazebo_ros_openni_kinect.so">
+			<baseline>0.2</baseline>
+			<alwaysOn>true</alwaysOn>
+			<updateRate>1.0</updateRate>
+			<cameraName>${name}_asus</cameraName>
+			<imageTopicName>/${name}_asus/depth/image_raw</imageTopicName>
+			<cameraInfoTopicName>/${name}_asus/depth/camera_info</cameraInfoTopicName>
+			<depthImageTopicName>/${name}_asus/depth/image_raw</depthImageTopicName>
+			<depthImageInfoTopicName>/${name}_asus/depth/camera_info</depthImageInfoTopicName>
+			<pointCloudTopicName>/${name}_asus/depth/points</pointCloudTopicName>
+			<frameName>${name}_asus</frameName>
+			<pointCloudCutoff>0.5</pointCloudCutoff>
+			<distortionK1>0.00000001</distortionK1>
+			<distortionK2>0.00000001</distortionK2>
+			<distortionK3>0.00000001</distortionK3>
+			<distortionT1>0.00000001</distortionT1>
+			<distortionT2>0.00000001</distortionT2>
+			<CxPrime>0</CxPrime>
+			<Cx>0</Cx>
+			<Cy>0</Cy>
+			<focalLength>0</focalLength>
+			<hackBaseline>0</hackBaseline>
+		</plugin -->
+
+		<gazebo>
+			<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+				<robotNamespace>${name}</robotNamespace>
+			</plugin>
+		</gazebo>
+
+	</xacro:macro>
+
+</robot>
