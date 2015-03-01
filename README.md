@@ -6,19 +6,6 @@ The main documentation can be found at https://i61wiki.itec.uka.de/doc/karlsruhe
 More info: 
 Carlos Rosales: carlos.rosales@for.unipi.it
 
-
-Head PC
--------
-
-usr: master
-psw: Karlsruhe2013
-
-access to KIT repos
--------------------
-
-usr: centropiaggio
-psw: centropiaggio
-
 MCA framework
 -------------
 
