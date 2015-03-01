@@ -197,9 +197,9 @@
         <material name="KIT/DarkGrey"/>
       </visual>
       <collision>
-        <origin xyz="0 0.18 0" rpy="${M_PI/2} 0 0"/>
+        <origin xyz="-0.1 0.10 0" rpy="${M_PI/2} 0 0"/>
         <geometry>
-          <cylinder radius="0.15" length="0.4"/>s
+          <cylinder radius="0.12" length="0.3"/>
         </geometry>
       </collision>
     </link>
@@ -230,7 +230,7 @@
         <material name="KIT/White"/>
       </visual>
       <collision>
-        <origin xyz="0.02 0 0" rpy="0 0 0"/>
+        <origin xyz="0.02 0 0" rpy="0 ${M_PI/2} 0"/>
         <geometry>
           <cylinder radius="0.03" length="0.02"/>
         </geometry>
@@ -263,7 +263,7 @@
         <material name="KIT/White"/>
       </visual>
       <collision>
-        <origin xyz="0.02 0 0" rpy="0 0 0"/>
+        <origin xyz="0.02 0 0" rpy="0 ${M_PI/2} 0"/>
         <geometry>
           <cylinder radius="0.03" length="0.02"/>
         </geometry>
@@ -310,9 +310,9 @@
         <material name="KIT/Black"/>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
         <geometry>
-          <cylinder radius="0.03" length="0.15"/>
+          <cylinder radius="0.03" length="0.20"/>
         </geometry>
       </collision>
     </link>
