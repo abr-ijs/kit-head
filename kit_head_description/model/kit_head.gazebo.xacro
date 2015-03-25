@@ -181,7 +181,7 @@
 					<cameraInfoTopicName>${name}_asus/rgb/camera_info</cameraInfoTopicName>
 					<depthImageTopicName>${name}_asus/depth/image_raw</depthImageTopicName>
 					<depthImageCameraInfoTopicName>${name}_asus/depth/camera_info</depthImageCameraInfoTopicName>
-					<pointCloudTopicName>${name}_asus/depth/points</pointCloudTopicName>
+					<pointCloudTopicName>${name}_asus/depth_registered/points</pointCloudTopicName>
 					<frameName>${name}_asus/camera_rgb_optical_frame</frameName>
 					<pointCloudCutoff>0.5</pointCloudCutoff>
 					<distortion_k1>0.0</distortion_k1>
