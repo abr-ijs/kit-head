@@ -218,7 +218,7 @@
 		</plugin -->
 
 		<gazebo>
-			<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+			<plugin name="${name}_kit_head_hw_sim_plugin" filename="libkit_head_hw_sim_plugin.so">
 				<robotNamespace>${name}</robotNamespace>
 			</plugin>
 		</gazebo>
