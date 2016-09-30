@@ -17,6 +17,8 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(gazebo REQUIRED)
 
+add_definitions (-fpermissive -std=c++11)
+
 ## CATKIN CONFIGURATION
 
 catkin_package(
