@@ -50,10 +50,10 @@
                          k_velocity="30"/>
       <dynamics friction="1.0" damping="1.0"/>
       <parent link="${name}_base_link"/>
-      <child link="${name}_head_1_link"/>
+      <child link="${name}_neck_pitch_link"/>
     </joint>
 
-    <link name="${name}_head_1_link">
+    <link name="${name}_neck_pitch_link">
       <inertial>
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
@@ -82,11 +82,11 @@
                          k_position="30"
                          k_velocity="30"/>
       <dynamics friction="1.0" damping="1.0"/>
-      <parent link="${name}_head_1_link"/>
-      <child link="${name}_head_2_link"/>
+      <parent link="${name}_neck_pitch_link"/>
+      <child link="${name}_neck_roll_link"/>
     </joint>
 
-    <link name="${name}_head_2_link">
+    <link name="${name}_neck_roll_link">
       <inertial>
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
@@ -115,11 +115,11 @@
                          k_position="30"
                          k_velocity="30"/>
       <dynamics friction="1.0" damping="1.0"/>
-      <parent link="${name}_head_2_link"/>
-      <child link="${name}_head_3_link"/>
+      <parent link="${name}_neck_roll_link"/>
+      <child link="${name}_neck_yaw_link"/>
     </joint>
 
-    <link name="${name}_head_3_link">
+    <link name="${name}_neck_yaw_link">
       <inertial>
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
@@ -138,8 +138,8 @@
       </collision>
     </link>
 
-    <joint name="${name}_head_tilt_joint" type="revolute">
-      <origin xyz="0 0 -0.1745" rpy="${M_PI/2} 0 0"/>
+    <joint name="${name}_neck_tilt_joint" type="revolute">
+      <origin xyz="0 0 -0.122" rpy="${M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit lower="${-40 * M_PI / 180}" upper="${40 * M_PI / 180}"
              effort="204" velocity="${velocity_scale_factor * 180 * M_PI / 180}" />
@@ -148,11 +148,11 @@
                          k_position="30"
                          k_velocity="30"/>
       <dynamics friction="1.0" damping="1.0"/>
-      <parent link="${name}_head_3_link"/>
-      <child link="${name}_head_4_link"/>
+      <parent link="${name}_neck_yaw_link"/>
+      <child link="${name}_neck_tilt_link"/>
     </joint>
 
-    <link name="${name}_head_4_link">
+    <link name="${name}_neck_tilt_link">
       <inertial>
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
@@ -172,7 +172,7 @@
     </link>
 
     <joint name="${name}_eyes_tilt_joint" type="revolute">
-      <origin xyz="0.1 0 0" rpy="0 0 0"/>
+      <origin xyz="0.1 -0.0525 0.0" rpy="0 0 0"/>
       <axis xyz="0 0 1"/>
       <limit lower="${-20 * M_PI / 180}" upper="${20 * M_PI / 180}"
              effort="204" velocity="${velocity_scale_factor * 180 * M_PI / 180}" />
@@ -181,11 +181,11 @@
                          k_position="30"
                          k_velocity="30"/>
       <dynamics friction="1.0" damping="1.0"/>
-      <parent link="${name}_head_4_link"/>
-      <child link="${name}_head_5_link"/>
+      <parent link="${name}_neck_tilt_link"/>
+      <child link="${name}_eyes_tilt_link"/>
     </joint>
 
-    <link name="${name}_head_5_link">
+    <link name="${name}_eyes_tilt_link">
       <inertial>
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
@@ -214,25 +214,50 @@
                          k_position="30"
                          k_velocity="30"/>
       <dynamics friction="1.0" damping="1.0"/>
-      <parent link="${name}_head_5_link"/>
-      <child link="${name}_left_eye_link"/>
+      <parent link="${name}_eyes_tilt_link"/>
+      <child link="${name}_left_eye_peripheral_link"/>
     </joint>
 
-    <link name="${name}_left_eye_link">
+    <link name="${name}_left_eye_peripheral_link">
       <inertial>
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
       <visual>
-        <origin xyz="0.02 0 0" rpy="0 ${M_PI/2} 0"/>
+        <origin xyz="0.0 0 0.018" rpy="0 ${M_PI/2} 0"/>
         <geometry>
-          <cylinder radius="0.03" length="0.02"/>
+          <sphere radius="0.018"/>
         </geometry>
         <material name="KIT/White"/>
       </visual>
       <collision>
-        <origin xyz="0.02 0 0" rpy="0 ${M_PI/2} 0"/>
+        <origin xyz="0.0 0 0" rpy="0 ${M_PI/2} 0"/>
         <geometry>
-          <cylinder radius="0.03" length="0.02"/>
+          <sphere radius="0.018"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_left_eye_foveal_joint" type="fixed">
+      <origin xyz="0 0 -0.018" rpy="0.0 0.0 0.0"/>
+      <parent link="${name}_left_eye_peripheral_link"/>
+      <child link="${name}_left_eye_foveal_link"/>
+    </joint>
+
+    <link name="${name}_left_eye_foveal_link">
+      <inertial>
+        <xacro:insert_block name="negligible_inertia"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.018"/>
+        </geometry>
+        <material name="KIT/White"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.018"/>
         </geometry>
       </collision>
     </link>
@@ -247,25 +272,50 @@
                          k_position="30"
                          k_velocity="30"/>
       <dynamics friction="1.0" damping="1.0"/>
-      <parent link="${name}_head_5_link"/>
-      <child link="${name}_right_eye_link"/>
+      <parent link="${name}_eyes_tilt_link"/>
+      <child link="${name}_right_eye_peripheral_link"/>
     </joint>
 
-    <link name="${name}_right_eye_link">
+    <link name="${name}_right_eye_peripheral_link">
       <inertial>
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
       <visual>
-        <origin xyz="0.02 0 0" rpy="0 ${M_PI/2} 0"/>
+        <origin xyz="0.0 0 0.018" rpy="0 ${M_PI/2} 0"/>
         <geometry>
-          <cylinder radius="0.03" length="0.02"/>
+          <sphere radius="0.018"/>
         </geometry>
         <material name="KIT/White"/>
       </visual>
       <collision>
-        <origin xyz="0.02 0 0" rpy="0 ${M_PI/2} 0"/>
+        <origin xyz="0.0 0 0" rpy="0 ${M_PI/2} 0"/>
         <geometry>
-          <cylinder radius="0.03" length="0.02"/>
+          <sphere radius="0.018"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="${name}_right_eye_foveal_joint" type="fixed">
+      <origin xyz="0 0 -0.018" rpy="0.0 0.0 0.0"/>
+      <parent link="${name}_right_eye_peripheral_link"/>
+      <child link="${name}_right_eye_foveal_link"/>
+    </joint>
+
+    <link name="${name}_right_eye_foveal_link">
+      <inertial>
+        <xacro:insert_block name="negligible_inertia"/>
+      </inertial>
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.018"/>
+        </geometry>
+        <material name="KIT/White"/>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <sphere radius="0.018"/>
         </geometry>
       </collision>
     </link>
@@ -292,7 +342,7 @@
       </collision>
     </link> -->
 
-    <joint name="${name}_asus_joint" type="fixed">
+    <!--<joint name="${name}_asus_joint" type="fixed">
       <origin xyz="0 -0.1 0" rpy="1.5707 0.0 0.0"/>
       <parent link="${name}_head_5_link"/>
       <child link="${name}_asus_link"/>
@@ -315,7 +365,7 @@
           <cylinder radius="0.03" length="0.20"/>
         </geometry>
       </collision>
-    </link>
+    </link> !-->
 
     <xacro:kit_head_transmission name="${name}"/>
     <xacro:kit_head_gazebo name="${name}"/>
