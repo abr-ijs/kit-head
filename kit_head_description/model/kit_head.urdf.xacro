@@ -12,7 +12,7 @@
   <xacro:macro name="kit_head" params="parent name *origin">
 
 
-    <!-- The base of the hand, fixed to its parent. -->
+    <!-- The base of the head, fixed to its parent. -->
     <joint name="${parent}_${name}_base_joint" type="fixed">
       <xacro:insert_block name="origin"/>
       <parent link="${parent}"/>
@@ -23,14 +23,14 @@
       <inertial>
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
-      <!-- <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
+       <visual>
+        <origin xyz="0 0 0.05" rpy="0 0 0"/>
         <geometry>
-          <cylinder radius="0.03" length="0.15"/>
+          <box size="0.25 0.25 0.1"/>
         </geometry>
         <material name="KIT/DarkGrey"/>
       </visual>
-      <collision>
+      <!--<collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
           <cylinder radius="0.03" length="0.15"/>
@@ -40,7 +40,7 @@
     
     <!-- neck -->
     <joint name="${name}_neck_pitch_joint" type="revolute">
-      <origin xyz="0 0 0" rpy="${-1*M_PI/2} 0 0"/>
+      <origin xyz="0 0 0.168" rpy="${-1*M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit lower="${-33 * M_PI / 180}" upper="${33 * M_PI / 180}"
              effort="204" velocity="${velocity_scale_factor * 180 * M_PI / 180}" />
@@ -203,9 +203,9 @@
         </geometry>
       </collision>
     </link>
-
+		<!-- -9 mm to go to the upper eye -->
     <joint name="${name}_left_eye_joint" type="revolute">
-      <origin xyz="0 0 0.0465" rpy="${M_PI/2} 0 0"/>
+      <origin xyz="0 -0.009 0.0465" rpy="${M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit lower="${-20 * M_PI / 180}" upper="${20 * M_PI / 180}"
              effort="204" velocity="${velocity_scale_factor * 180 * M_PI / 180}" />
@@ -223,16 +223,16 @@
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
       <visual>
-        <origin xyz="0.0 0 0.018" rpy="0 ${M_PI/2} 0"/>
+        <origin xyz="0.0 0 0.0" rpy="0 ${M_PI/2} 0"/>
         <geometry>
-          <sphere radius="0.018"/>
+          <sphere radius="0.009"/>
         </geometry>
         <material name="KIT/White"/>
       </visual>
       <collision>
         <origin xyz="0.0 0 0" rpy="0 ${M_PI/2} 0"/>
         <geometry>
-          <sphere radius="0.018"/>
+          <sphere radius="0.009"/>
         </geometry>
       </collision>
     </link>
@@ -250,20 +250,20 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <sphere radius="0.018"/>
+          <sphere radius="0.009"/>
         </geometry>
         <material name="KIT/White"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <sphere radius="0.018"/>
+          <sphere radius="0.009"/>
         </geometry>
       </collision>
     </link>
-
+		<!-- -9 mm to go to the upper eye -->
     <joint name="${name}_right_eye_joint" type="revolute">
-      <origin xyz="0 0 -0.0465" rpy="${M_PI/2} 0 0"/>
+      <origin xyz="0 -0.009 -0.0465" rpy="${M_PI/2} 0 0"/>
       <axis xyz="0 0 1"/>
       <limit lower="${-20 * M_PI / 180}" upper="${20 * M_PI / 180}"
              effort="204" velocity="${velocity_scale_factor * 180 * M_PI / 180}" />
@@ -281,16 +281,16 @@
         <xacro:insert_block name="negligible_inertia"/>
       </inertial>
       <visual>
-        <origin xyz="0.0 0 0.018" rpy="0 ${M_PI/2} 0"/>
+        <origin xyz="0.0 0 0.0" rpy="0 ${M_PI/2} 0"/>
         <geometry>
-          <sphere radius="0.018"/>
+          <sphere radius="0.009"/>
         </geometry>
         <material name="KIT/White"/>
       </visual>
       <collision>
         <origin xyz="0.0 0 0" rpy="0 ${M_PI/2} 0"/>
         <geometry>
-          <sphere radius="0.018"/>
+          <sphere radius="0.009"/>
         </geometry>
       </collision>
     </link>
@@ -308,14 +308,14 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <sphere radius="0.018"/>
+          <sphere radius="0.009"/>
         </geometry>
         <material name="KIT/White"/>
       </visual>
       <collision>
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <geometry>
-          <sphere radius="0.018"/>
+          <sphere radius="0.009"/>
         </geometry>
       </collision>
     </link>
