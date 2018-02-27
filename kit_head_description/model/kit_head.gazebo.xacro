@@ -12,7 +12,7 @@
 			<kd>1.0</kd>
 		</gazebo>
 
-		<gazebo reference="${name}_head_1_link">
+		<gazebo reference="${name}_neck_pitch_link">
 			<!-- selfCollide>true</selfCollide -->
 			<gravity>true</gravity>
 			<mu1>500.0</mu1>
@@ -21,7 +21,7 @@
 			<kd>1.0</kd>
 		</gazebo>
 
-		<gazebo reference="${name}_head_2_link">
+		<gazebo reference="${name}_neck_roll_link">
 			<!-- selfCollide>true</selfCollide -->
 			<gravity>true</gravity>
 			<mu1>500.0</mu1>
@@ -30,7 +30,7 @@
 			<kd>1.0</kd>
 		</gazebo>
 
-		<gazebo reference="${name}_head_3_link">
+		<gazebo reference="${name}_neck_yaw_link">
 			<!-- selfCollide>true</selfCollide -->
 			<gravity>true</gravity>
 			<mu1>500.0</mu1>
@@ -39,7 +39,7 @@
 			<kd>1.0</kd>
 		</gazebo>
 
-		<gazebo reference="${name}_head_4_link">
+		<gazebo reference="${name}_neck_tilt_link">
 			<!-- selfCollide>true</selfCollide -->
 			<gravity>true</gravity>
 			<mu1>500.0</mu1>
@@ -48,7 +48,7 @@
 			<kd>1.0</kd>
 		</gazebo>
 
-		<gazebo reference="${name}_head_5_link">
+		<gazebo reference="${name}_eyes_tilt_link">
 			<!-- selfCollide>true</selfCollide -->
 			<gravity>true</gravity>
 			<mu1>500.0</mu1>
